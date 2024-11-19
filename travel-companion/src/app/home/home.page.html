@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Travel Companion
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-text-center">
+    <ion-button expand="block" (click)="takePicture()">
+      Take Picture
+    </ion-button>
+    
+    <ion-button expand="block" (click)="getLocation()">
+      Get Location
+    </ion-button>
+
+    <ion-button expand="block" (click)="getDeviceInfo()">
+      Get Device Info
+    </ion-button>
+
+    @if (deviceInfo) {
+      <div class="info-card">
+        <h3>Device Information</h3>
+        <ion-list lines="full">
+          <ion-item>
+            <ion-label>
+              <h4>Model</h4>
+              <p>{{ deviceInfo.model }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>Platform</h4>
+              <p>{{ deviceInfo.platform }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>UUID</h4>
+              <p>{{ deviceInfo.uuid }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>Browser User Agent</h4>
+              <p>{{ deviceInfo.browserInfo.userAgent }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>Browser Platform</h4>
+              <p>{{ deviceInfo.browserInfo.platform }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>Browser Language</h4>
+              <p>{{ deviceInfo.browserInfo.language }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    }
+
+    @if (location) {
+      <div class="info-card">
+        <h3>Location Information</h3>
+        <ion-list lines="full">
+          <ion-item>
+            <ion-label>
+              <h4>Latitude</h4>
+              <p>{{ location.coords.latitude }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>Longitude</h4>
+              <p>{{ location.coords.longitude }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h4>Accuracy</h4>
+              <p>{{ location.coords.accuracy }} meters</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    }
+  </div>
+</ion-content>
